@@ -82,7 +82,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBNET, \
         -D "JDK_FNAME=net.dll" \
         -D "JDK_INTERNAL_NAME=net" \
         -D "JDK_FTYPE=0x2L", \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libnet, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libnet, \
     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 $(BUILD_LIBNET): $(BUILD_LIBJAVA)

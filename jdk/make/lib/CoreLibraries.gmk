@@ -26,7 +26,7 @@
 # Include custom extensions if available.
 -include $(CUSTOM_MAKE_DIR)/lib/CoreLibraries.gmk
 
-WIN_VERIFY_LIB := $(JDK_OUTPUTDIR)/objs/libverify/verify.lib
+WIN_VERIFY_LIB := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libverify/verify.lib
 
 ##########################################################################################
 
@@ -63,7 +63,7 @@ ifneq ($(OPENJDK_TARGET_OS), macosx)
       CFLAGS_linux_ppc64 := -mno-fused-madd -fno-strict-aliasing, \
       CFLAGS_linux_ppc64le := -ffp-contract=off, \
       ARFLAGS := $(ARFLAGS), \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libfdlibm, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libfdlibm, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 else
@@ -72,13 +72,13 @@ else
   # a plain static library.
   $(eval $(call SetupNativeCompilation,BUILD_LIBFDLIBM_MAC, \
       LIBRARY := fdlibm, \
-      OUTPUT_DIR := $(JDK_OUTPUTDIR)/objs/libfdlibm, \
+      OUTPUT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libfdlibm, \
       SRC := $(JDK_TOPDIR)/src/share/native/java/lang/fdlibm/src, \
       LANG := C, \
       CFLAGS := $(CFLAGS_JDKLIB) \
           -I$(JDK_TOPDIR)/src/share/native/java/lang/fdlibm/include, \
       LDFLAGS := -nostdlib -r -arch x86_64, \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libfdlibm, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libfdlibm, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   BUILD_LIBFDLIBM := $(JDK_OUTPUTDIR)/objs/$(LIBRARY_PREFIX)fdlibm$(STATIC_LIBRARY_SUFFIX)
@@ -125,7 +125,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBVERIFY, \
         -D "JDK_INTERNAL_NAME=verify" \
         -D "JDK_FTYPE=0x2L", \
     REORDER := $(BUILD_LIBVERIFY_REORDER), \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libverify, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libverify, \
     DEBUG_SYMBOLS := true))
 
 BUILD_LIBRARIES += $(BUILD_LIBVERIFY)
@@ -237,7 +237,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBJAVA, \
         -D "JDK_INTERNAL_NAME=java" \
         -D "JDK_FTYPE=0x2L", \
     REORDER := $(LIBJAVA_REORDER), \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libjava, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjava, \
     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 BUILD_LIBRARIES += $(BUILD_LIBJAVA)
@@ -298,7 +298,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBZIP, \
         -D "JDK_FNAME=zip.dll" \
         -D "JDK_INTERNAL_NAME=zip" \
         -D "JDK_FTYPE=0x2L", \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libzip, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libzip, \
     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 
@@ -324,7 +324,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBUNPACK, \
     LDFLAGS_windows := -map:$(JDK_OUTPUTDIR)/objs/unpack.map -debug \
         jvm.lib $(WIN_JAVA_LIB), \
     LDFLAGS_SUFFIX_posix := -ljvm $(LIBCXX) -ljava -lc, \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libunpack, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libunpack, \
     VERSIONINFO_RESOURCE := $(JDK_TOPDIR)/src/windows/resource/version.rc, \
     RC_FLAGS := $(RC_FLAGS) \
         -D "JDK_FNAME=unpack.dll" \
@@ -462,7 +462,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBJLI, \
         -D "JDK_FNAME=jli.dll" \
         -D "JDK_INTERNAL_NAME=jli" \
         -D "JDK_FTYPE=0x2L", \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libjli, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjli, \
     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 BUILD_LIBRARIES += $(BUILD_LIBJLI)
@@ -480,7 +480,7 @@ ifeq ($(OPENJDK_TARGET_OS), windows)
       OPTIMIZATION := HIGH, \
       CFLAGS := $(STATIC_LIBRARY_FLAGS) $(LIBJLI_CFLAGS), \
       ARFLAGS := $(ARFLAGS), \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libjli_static, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjli_static, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   BUILD_LIBRARIES += $(BUILD_LIBJLI_STATIC)
@@ -499,13 +499,13 @@ else ifeq ($(OPENJDK_TARGET_OS), macosx)
       OPTIMIZATION := HIGH, \
       CFLAGS := $(CFLAGS_JDKLIB) $(LIBJLI_CFLAGS), \
       LDFLAGS := -nostdlib -r, \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libjli_static, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjli_static, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
-  $(JDK_OUTPUTDIR)/objs/libjli_static.a: $(BUILD_LIBJLI_STATIC)
+  e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjli_static.a: $(BUILD_LIBJLI_STATIC)
 	$(call install-file)
 
-  BUILD_LIBRARIES += $(JDK_OUTPUTDIR)/objs/libjli_static.a
+  BUILD_LIBRARIES += e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjli_static.a
 
 else ifeq ($(OPENJDK_TARGET_OS), aix)
   # AIX also requires a static libjli because the compiler doesn't support '-rpath'
@@ -518,9 +518,9 @@ else ifeq ($(OPENJDK_TARGET_OS), aix)
       OPTIMIZATION:=HIGH, \
       CFLAGS:=$(STATIC_LIBRARY_FLAGS) $(LIBJLI_CFLAGS),\
       ARFLAGS:=$(ARFLAGS),\
-      OBJECT_DIR:=$(JDK_OUTPUTDIR)/objs/libjli_static))
+      OBJECT_DIR:=e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjli_static))
 
-  BUILD_LIBRARIES += $(JDK_OUTPUTDIR)/objs/libjli_static.a
+  BUILD_LIBRARIES += e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjli_static.a
 
 endif
 
@@ -546,7 +546,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBNPT, \
         -D "JDK_FNAME=npt.dll" \
         -D "JDK_INTERNAL_NAME=npt" \
         -D "JDK_FTYPE=0x2L", \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libnpt, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libnpt, \
     DEBUG_SYMBOLS := true))
 
 BUILD_LIBRARIES += $(BUILD_LIBNPT)

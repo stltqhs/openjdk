@@ -266,6 +266,38 @@ char *fix_at_file(char *in)
   return atname;
 }
 
+char *replace_babun(char *in)
+{
+  char *str;
+  char *rep = "/d/Application/babun-1.2.0/.babun/cygwin";
+  int p = 0;
+
+  str = in;
+  while ((p = strstr(str, rep)))
+  {
+  
+     str = replace_substring(str, rep, "");
+  }
+
+  return str;
+}
+
+char *replace_vs_link(char *in)
+{
+  char *str;
+  int p = 0;
+  char *substr = "Application/VisualStudio12.0";
+  char *replace = "Program Files (x86)/Microsoft Visual Studio 12.0";
+
+  str = in;
+  while ((p = strstr(str, substr)))
+  {
+     str = replace_substring(str, substr, replace);
+  }
+
+  return str;
+}
+
 int main(int argc, char **argv)
 {
     STARTUPINFO si;
@@ -302,12 +334,13 @@ int main(int argc, char **argv)
       fprintf(stderr, "Unknown mode: %s\n", argv[1]);
       exit(-1);
     }
-    line = replace_cygdrive(strstr(GetCommandLine(), argv[2]));
+    line = replace_babun(strstr(GetCommandLine(), argv[2]));
+    line = replace_cygdrive(line);
 
     for (i=1; i<argc; ++i) {
        if (argv[i][0] == '@') {
           // Found at-file! Fix it!
-          old_at_file = replace_cygdrive(argv[i]);
+          old_at_file = replace_cygdrive(replace_babun(argv[i]));
           new_at_file = fix_at_file(old_at_file);
           line = replace_substring(line, old_at_file, new_at_file);
        }
@@ -321,6 +354,8 @@ int main(int argc, char **argv)
     si.cb=sizeof(si);
     ZeroMemory(&pi,sizeof(pi));
 
+    line = replace_vs_link(line);
+
     rc = CreateProcess(NULL,
                        line,
                        0,
@@ -333,6 +368,7 @@ int main(int argc, char **argv)
                        &pi);
     if(!rc) {
       // Could not start process for some reason.  Try to report why:
+      fprintf(stderr, "=>%s\n", line);
       report_error();
       exit(rc);
     }

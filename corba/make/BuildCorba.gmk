@@ -198,7 +198,7 @@ ifeq ($(LOGWRAPPERS_ARE_CREATED), yes)
     # mimic behavior in old build system.
     $(eval $(call SetupZipArchive,ARCHIVE_BUILD_CORBA, \
         SRC := $(CORBA_TOPDIR)/src/share/classes $(CORBA_OUTPUTDIR)/gensrc $(CORBA_OUTPUTDIR)/logwrappers, \
-        ZIP := $(CORBA_OUTPUTDIR)/dist/lib/src.zip))
+        ZIP := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/corba/dist/lib/src.zip))
 
     $(BUILD_CORBA): $(BUILD_IDLS) $(LOGWRAPPER_DEPENDENCIES)
 
@@ -238,7 +238,7 @@ ifeq ($(LOGWRAPPERS_ARE_CREATED), yes)
     BIN_FILES := $(CORBA_TOPDIR)/src/share/classes/com/sun/tools/corba/se/idl/orb.idl \
         $(CORBA_TOPDIR)/src/share/classes/com/sun/tools/corba/se/idl/ir.idl
 
-    $(CORBA_OUTPUTDIR)/dist/lib/bin.zip: $(BIN_FILES) $(CORBA_OUTPUTDIR)/dist/lib/classes.jar
+    e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/corba/dist/lib/bin.zip: $(BIN_FILES) $(CORBA_OUTPUTDIR)/dist/lib/classes.jar
 	$(MKDIR) -p $(CORBA_OUTPUTDIR)/dist/lib
 	$(MKDIR) -p $(CORBA_OUTPUTDIR)/lib
 	$(RM) -f $@
@@ -254,8 +254,8 @@ ifeq ($(LOGWRAPPERS_ARE_CREATED), yes)
         $(CORBA_OUTPUTDIR)/btjars/logutil.jar \
         $(CORBA_OUTPUTDIR)/btjars/btcorba.jar \
         $(CORBA_OUTPUTDIR)/dist/lib/classes.jar \
-        $(CORBA_OUTPUTDIR)/dist/lib/src.zip \
-        $(CORBA_OUTPUTDIR)/dist/lib/bin.zip
+        e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/corba/dist/lib/src.zip \
+        e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/corba/dist/lib/bin.zip
   endif
 endif
 

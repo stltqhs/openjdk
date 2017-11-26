@@ -112,6 +112,7 @@ CXX_FLAGS=$(CXX_FLAGS) /D TARGET_COMPILER_visCPP
 #      1500 is for VS2008
 #      1600 is for VS2010
 #      1700 is for VS2012
+#      1800 is for VS2013
 #    Do not confuse this MSC_VER with the predefined macro _MSC_VER that the
 #    compiler provides, when MSC_VER==1399, _MSC_VER will be 1400.
 #    Normally they are the same, but a pre-release of the VS2005 compilers
@@ -146,6 +147,9 @@ COMPILER_NAME=VS2010
 !endif
 !if "$(MSC_VER)" == "1700"
 COMPILER_NAME=VS2012
+!endif
+!if "$(MSC_VER)" == "1800"
+COMPILER_NAME=VS2013
 !endif
 !endif
 

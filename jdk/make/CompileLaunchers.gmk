@@ -78,7 +78,7 @@ define SetupLauncher
   # Parameter 10 if set, link statically with c runtime on windows.
   # Parameter 11 if set, override plist file on macosx.
 
-  $1_WINDOWS_JLI_LIB := $(JDK_OUTPUTDIR)/objs/libjli/jli.lib
+  $1_WINDOWS_JLI_LIB := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjli/jli.lib
   ifneq ($6, )
     $1_WINDOWS_JLI_LIB := $6
   endif
@@ -98,14 +98,14 @@ define SetupLauncher
       endif
     endif
 
-    $1_LDFLAGS += -Wl,-all_load $(JDK_OUTPUTDIR)/objs/libjli_static.a \
+    $1_LDFLAGS += -Wl,-all_load e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjli_static.a \
         -framework Cocoa -framework Security -framework ApplicationServices \
         -sectcreate __TEXT __info_plist $(JDK_TOPDIR)/src/macosx/lib/$$($1_PLIST_FILE)
         $1_LDFLAGS_SUFFIX += -pthread
   endif
 
   ifeq ($(OPENJDK_TARGET_OS), aix)
-    $1_LDFLAGS_SUFFIX += -L$(JDK_OUTPUTDIR)/objs -ljli_static
+    $1_LDFLAGS_SUFFIX += -Le:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs -ljli_static
   endif
 
   ifeq ($(USE_EXTERNAL_LIBZ), true)
@@ -114,7 +114,7 @@ define SetupLauncher
 
   $1_OUTPUT_DIR_ARG := $9
   ifeq (, $$($1_OUTPUT_DIR_ARG))
-    $1_OUTPUT_DIR_ARG := $(JDK_OUTPUTDIR)/bin
+    $1_OUTPUT_DIR_ARG := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/bin
   endif
 
   # TODO: maybe it's better to move this if-statement out of this function
@@ -177,10 +177,10 @@ define SetupLauncher
       LDFLAGS_SUFFIX := $(LDFLAGS_JDKEXE_SUFFIX) $$($1_LDFLAGS_SUFFIX), \
       LDFLAGS_SUFFIX_posix := $4, \
       LDFLAGS_SUFFIX_windows := $$($1_WINDOWS_JLI_LIB) \
-          $(JDK_OUTPUTDIR)/objs/libjava/java.lib advapi32.lib $5, \
-      LDFLAGS_SUFFIX_linux := -L$(JDK_OUTPUTDIR)/lib$(OPENJDK_TARGET_CPU_LIBDIR)/jli -ljli $(LIBDL) -lc, \
-      LDFLAGS_SUFFIX_solaris := -L$(JDK_OUTPUTDIR)/lib$(OPENJDK_TARGET_CPU_LIBDIR)/jli -ljli -lthread $(LIBDL) -lc, \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/$1_objs$(OUTPUT_SUBDIR), \
+          e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjava/java.lib advapi32.lib $5, \
+      LDFLAGS_SUFFIX_linux := -Le:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/lib$(OPENJDK_TARGET_CPU_LIBDIR)/jli -ljli $(LIBDL) -lc, \
+      LDFLAGS_SUFFIX_solaris := -Le:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/lib$(OPENJDK_TARGET_CPU_LIBDIR)/jli -ljli -lthread $(LIBDL) -lc, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/$1_objs$(OUTPUT_SUBDIR), \
       OUTPUT_DIR := $$($1_OUTPUT_DIR_ARG)$(OUTPUT_SUBDIR), \
       PROGRAM := $1, \
       DEBUG_SYMBOLS := true, \
@@ -196,11 +196,11 @@ define SetupLauncher
   BUILD_LAUNCHERS += $$(BUILD_LAUNCHER_$1)
 
   ifneq (,$(filter $(OPENJDK_TARGET_OS), macosx aix))
-    $$(BUILD_LAUNCHER_$1): $(JDK_OUTPUTDIR)/objs/libjli_static.a
+    $$(BUILD_LAUNCHER_$1): e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjli_static.a
   endif
 
   ifeq ($(OPENJDK_TARGET_OS), windows)
-    $$(BUILD_LAUNCHER_$1): $(JDK_OUTPUTDIR)/objs/libjava/java.lib \
+    $$(BUILD_LAUNCHER_$1): e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjava/java.lib \
         $$($1_WINDOWS_JLI_LIB)
   endif
 endef
@@ -224,20 +224,20 @@ endif
 # overwritten.
 $(eval $(call SetupLauncher,java, \
     -DEXPAND_CLASSPATH_WILDCARDS,,,user32.lib comctl32.lib, \
-    $(JDK_OUTPUTDIR)/objs/jli_static.lib, $(JAVA_RC_FLAGS), \
-    $(JDK_TOPDIR)/src/windows/resource/java.rc, $(JDK_OUTPUTDIR)/objs/java_objs,true))
+    e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/jli_static.lib, $(JAVA_RC_FLAGS), \
+    $(JDK_TOPDIR)/src/windows/resource/java.rc, e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/java_objs,true))
 
-$(JDK_OUTPUTDIR)/bin$(OUTPUT_SUBDIR)/java$(EXE_SUFFIX): $(BUILD_LAUNCHER_java)
+e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/bin$(OUTPUT_SUBDIR)/java$(EXE_SUFFIX): $(BUILD_LAUNCHER_java)
 	$(MKDIR) -p $(@D)
 	$(RM) $@
-	$(CP) $(JDK_OUTPUTDIR)/objs/java_objs$(OUTPUT_SUBDIR)/java$(EXE_SUFFIX) $@
+	$(CP) e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/java_objs$(OUTPUT_SUBDIR)/java$(EXE_SUFFIX) $@
 
-BUILD_LAUNCHERS += $(JDK_OUTPUTDIR)/bin$(OUTPUT_SUBDIR)/java$(EXE_SUFFIX)
+BUILD_LAUNCHERS += e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/bin$(OUTPUT_SUBDIR)/java$(EXE_SUFFIX)
 
 ifeq ($(OPENJDK_TARGET_OS), windows)
   $(eval $(call SetupLauncher,javaw, \
       -DJAVAW -DEXPAND_CLASSPATH_WILDCARDS,,,user32.lib comctl32.lib, \
-      $(JDK_OUTPUTDIR)/objs/jli_static.lib, $(JAVA_RC_FLAGS), \
+      e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/jli_static.lib, $(JAVA_RC_FLAGS), \
       $(JDK_TOPDIR)/src/windows/resource/java.rc,,true))
 endif
 
@@ -430,16 +430,16 @@ ifeq ($(USE_EXTERNAL_LIBZ), true)
   UNPACKEXE_ZIPOBJS := -lz
 else
   UNPACKEXE_CFLAGS := -I$(JDK_TOPDIR)/src/share/native/java/util/zip/zlib-1.2.8
-  UNPACKEXE_ZIPOBJS := $(JDK_OUTPUTDIR)/objs/libzip/zcrc32$(OBJ_SUFFIX) \
-      $(JDK_OUTPUTDIR)/objs/libzip/deflate$(OBJ_SUFFIX) \
-      $(JDK_OUTPUTDIR)/objs/libzip/trees$(OBJ_SUFFIX) \
-      $(JDK_OUTPUTDIR)/objs/libzip/zadler32$(OBJ_SUFFIX) \
-      $(JDK_OUTPUTDIR)/objs/libzip/compress$(OBJ_SUFFIX) \
-      $(JDK_OUTPUTDIR)/objs/libzip/zutil$(OBJ_SUFFIX) \
-      $(JDK_OUTPUTDIR)/objs/libzip/inflate$(OBJ_SUFFIX) \
-      $(JDK_OUTPUTDIR)/objs/libzip/infback$(OBJ_SUFFIX) \
-      $(JDK_OUTPUTDIR)/objs/libzip/inftrees$(OBJ_SUFFIX) \
-      $(JDK_OUTPUTDIR)/objs/libzip/inffast$(OBJ_SUFFIX)
+  UNPACKEXE_ZIPOBJS := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libzip/zcrc32$(OBJ_SUFFIX) \
+      e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libzip/deflate$(OBJ_SUFFIX) \
+      e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libzip/trees$(OBJ_SUFFIX) \
+      e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libzip/zadler32$(OBJ_SUFFIX) \
+      e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libzip/compress$(OBJ_SUFFIX) \
+      e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libzip/zutil$(OBJ_SUFFIX) \
+      e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libzip/inflate$(OBJ_SUFFIX) \
+      e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libzip/infback$(OBJ_SUFFIX) \
+      e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libzip/inftrees$(OBJ_SUFFIX) \
+      e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libzip/inffast$(OBJ_SUFFIX)
 
 endif
 
@@ -486,8 +486,8 @@ $(eval $(call SetupNativeCompilation,BUILD_UNPACKEXE, \
     LDFLAGS_linux := -lc, \
     LDFLAGS_solaris := $(UNPACKEXE_LDFLAGS_solaris) -lc, \
     LDFLAGS_SUFFIX := $(LIBCXX), \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/unpackexe$(OUTPUT_SUBDIR), \
-    OUTPUT_DIR := $(JDK_OUTPUTDIR)/objs/unpackexe$(OUTPUT_SUBDIR), \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/unpackexe$(OUTPUT_SUBDIR), \
+    OUTPUT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/unpackexe$(OUTPUT_SUBDIR), \
     PROGRAM := unpack200, \
     VERSIONINFO_RESOURCE := $(JDK_TOPDIR)/src/windows/resource/version.rc, \
     RC_FLAGS := $(RC_FLAGS) \
@@ -511,10 +511,10 @@ endif
 # image. The real fix would be clean up linking of unpack200 using
 # -link -incremental:no
 # like all other launchers.
-$(JDK_OUTPUTDIR)/bin$(OUTPUT_SUBDIR)/unpack200$(EXE_SUFFIX): $(BUILD_UNPACKEXE)
+e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/bin$(OUTPUT_SUBDIR)/unpack200$(EXE_SUFFIX): $(BUILD_UNPACKEXE)
 	$(call install-file)
 
-BUILD_LAUNCHERS += $(JDK_OUTPUTDIR)/bin$(OUTPUT_SUBDIR)/unpack200$(EXE_SUFFIX)
+BUILD_LAUNCHERS += e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/bin$(OUTPUT_SUBDIR)/unpack200$(EXE_SUFFIX)
 
 ##########################################################################################
 
@@ -522,7 +522,7 @@ BUILD_LAUNCHERS += $(JDK_OUTPUTDIR)/bin$(OUTPUT_SUBDIR)/unpack200$(EXE_SUFFIX)
 BUILD_JEXEC :=
 BUILD_JEXEC_SRC :=
 BUILD_JEXEC_INC :=
-BUILD_JEXEC_DST_DIR := $(JDK_OUTPUTDIR)/lib$(OPENJDK_TARGET_CPU_LIBDIR)
+BUILD_JEXEC_DST_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/lib$(OPENJDK_TARGET_CPU_LIBDIR)
 
 #
 # UNHANDLED:
@@ -555,7 +555,7 @@ ifeq ($(BUILD_JEXEC), 1)
   endif
 
   ifeq ($(OPENJDK_TARGET_OS), linux)
-    BUILD_JEXEC_DST_DIR := $(JDK_OUTPUTDIR)/lib
+    BUILD_JEXEC_DST_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/lib
     BUILD_JEXEC_INC += -I$(JDK_TOPDIR)/src/share/bin
   endif
 endif
@@ -576,7 +576,7 @@ ifneq ($(BUILD_JEXEC_SRC), )
       CFLAGS_solaris := -KPIC, \
       LDFLAGS := $(LDFLAGS_JDKEXE) \
           $(call SET_SHARED_LIBRARY_NAME,$(LIBRARY_PREFIX)$(SHARED_LIBRARY_SUFFIX)), \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/jexec_obj, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/jexec_obj, \
       OUTPUT_DIR := $(BUILD_JEXEC_DST_DIR), \
       DEBUG_SYMBOLS := true, \
       PROGRAM := jexec))
@@ -589,7 +589,7 @@ endif
 #
 # The java-rmi.cgi script in bin/ only gets delivered in certain situations
 #
-JAVA_RMI_CGI := $(JDK_OUTPUTDIR)/bin$(OUTPUT_SUBDIR)/java-rmi.cgi
+JAVA_RMI_CGI := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/bin$(OUTPUT_SUBDIR)/java-rmi.cgi
 ifeq ($(OPENJDK_TARGET_OS), linux)
   BUILD_LAUNCHERS += $(JAVA_RMI_CGI)
 endif
@@ -617,8 +617,8 @@ endif
 
 BUILD_JSPAWNHELPER :=
 BUILD_JSPAWNHELPER_SRC := $(JDK_TOPDIR)/src/solaris/native/java/lang
-BUILD_JSPAWNHELPER_DST_DIR := $(JDK_OUTPUTDIR)/lib$(OPENJDK_TARGET_CPU_LIBDIR)
-LINK_JSPAWNHELPER_OBJECTS := $(JDK_OUTPUTDIR)/objs/libjava/childproc.o
+BUILD_JSPAWNHELPER_DST_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/lib$(OPENJDK_TARGET_CPU_LIBDIR)
+LINK_JSPAWNHELPER_OBJECTS := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjava/childproc.o
 LINK_JSPAWNHELPER_FLAGS :=
 
 ifneq ($(findstring $(OPENJDK_TARGET_OS), macosx solaris aix), )
@@ -626,7 +626,7 @@ ifneq ($(findstring $(OPENJDK_TARGET_OS), macosx solaris aix), )
 endif
 
 ifeq ($(OPENJDK_TARGET_OS), macosx)
-  BUILD_JSPAWNHELPER_DST_DIR := $(JDK_OUTPUTDIR)/lib
+  BUILD_JSPAWNHELPER_DST_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/lib
 endif
 
 ifeq ($(OPENJDK_TARGET_CPU_BITS), 64)
@@ -642,7 +642,7 @@ ifeq ($(BUILD_JSPAWNHELPER), 1)
       CFLAGS := $(CFLAGS_JDKEXE), \
       LDFLAGS := $(LDFLAGS_JDKEXE) $(LINK_JSPAWNHELPER_FLAGS), \
       LDFLAGS_SUFFIX := $(LINK_JSPAWNHELPER_OBJECTS), \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/jspawnhelper, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/jspawnhelper, \
       OUTPUT_DIR := $(BUILD_JSPAWNHELPER_DST_DIR), \
       PROGRAM := jspawnhelper))
 
@@ -665,8 +665,8 @@ endif
             -D_UNICODE -DUNICODE -RTC1 -EHsc, \
         LDFLAGS := $(LDFLAGS_JDKEXE) \
             Advapi32.lib Version.lib User32.lib, \
-        OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/jabswitch, \
-        OUTPUT_DIR := $(JDK_OUTPUTDIR)/bin, \
+        OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/jabswitch, \
+        OUTPUT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/bin, \
         PROGRAM := jabswitch, \
         DEBUG_SYMBOLS := true, \
       VERSIONINFO_RESOURCE := $(JDK_TOPDIR)/src/windows/native/sun/bridge/AccessBridgeStatusWindow.rc, \

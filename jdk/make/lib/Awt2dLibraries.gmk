@@ -26,7 +26,7 @@
 # Openwin is defined on Solaris.
 OPENWIN_LIB := $(OPENWIN_HOME)/lib
 
-WIN_AWT_LIB := $(JDK_OUTPUTDIR)/objs/libawt/awt.lib
+WIN_AWT_LIB := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libawt/awt.lib
 
 ##########################################################################################
 
@@ -68,7 +68,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBMLIB_IMAGE, \
         -D "JDK_FNAME=mlib_image.dll" \
         -D "JDK_INTERNAL_NAME=mlib_image" \
         -D "JDK_FTYPE=0x2L", \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libmlib_image, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libmlib_image, \
     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 $(BUILD_LIBMLIB_IMAGE): $(BUILD_LIBJAVA)
@@ -192,7 +192,7 @@ ifeq ($(OPENJDK_TARGET_OS)-$(OPENJDK_TARGET_CPU_ARCH), solaris-sparc)
           $(BUILD_LIBMLIB_LDLIBS) -ljava -ljvm \
           $(call SET_SHARED_LIBRARY_ORIGIN), \
       LDFLAGS_SUFFIX_solaris := -lc, \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libmlib_image_v, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libmlib_image_v, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   $(BUILD_LIBMLIB_IMAGE_V): $(BUILD_LIBJAVA)
@@ -444,7 +444,7 @@ ifeq ($(OPENJDK_TARGET_OS), windows)
       WGLSurfaceData.c
 
   LIBAWT_LANG := C++
-  LIBAWT_CFLAGS += -EHsc -DUNICODE -D_UNICODE
+  LIBAWT_CFLAGS += -EHsc -DUNICODE -D_UNICODE -MT
   ifeq ($(OPENJDK_TARGET_CPU_BITS), 64)
     LIBAWT_CFLAGS += -DMLIB_OS64BIT
   endif
@@ -503,7 +503,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBAWT, \
         -D "JDK_FNAME=awt.dll" \
         -D "JDK_INTERNAL_NAME=awt" \
         -D "JDK_FTYPE=0x2L", \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libawt, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libawt, \
     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 $(BUILD_LIBAWT): $(BUILD_LIBJAVA)
@@ -652,7 +652,7 @@ ifeq ($(findstring $(OPENJDK_TARGET_OS),windows macosx),)
             -D "JDK_FNAME=xawt.dll" \
             -D "JDK_INTERNAL_NAME=xawt" \
             -D "JDK_FTYPE=0x2L", \
-        OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libawt_xawt, \
+        OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libawt_xawt, \
         DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
     $(BUILD_LIBAWT_XAWT): $(BUILD_LIBJAVA)
@@ -694,7 +694,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBLCMS, \
         -D "JDK_FNAME=lcms.dll" \
         -D "JDK_INTERNAL_NAME=lcms" \
         -D "JDK_FTYPE=0x2L", \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/liblcms, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/liblcms, \
     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 BUILD_LIBRARIES += $(BUILD_LIBLCMS)
@@ -754,7 +754,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBJPEG, \
         -D "JDK_INTERNAL_NAME=jpeg" \
         -D "JDK_FTYPE=0x2L", \
     REORDER := $(BUILD_LIBJPEG_REORDER), \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libjpeg, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjpeg, \
     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 $(BUILD_LIBJPEG): $(BUILD_LIBJAVA)
@@ -847,7 +847,7 @@ ifeq ($(BUILD_HEADLESS), true)
         LDFLAGS_SUFFIX_linux := -ljvm -lawt -lm $(LIBDL) -ljava, \
         LDFLAGS_SUFFIX_aix := -ljvm -lawt -ljava,\
         LDFLAGS_SUFFIX_solaris := $(LIBDL) -ljvm -lawt -lm -ljava $(LIBCXX) -lc, \
-        OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libawt_headless, \
+        OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libawt_headless, \
         DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
     $(BUILD_LIBAWT_HEADLESS): $(BUILD_LIBAWT)
@@ -933,7 +933,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBFONTMANAGER, \
         -D "JDK_FNAME=fontmanager.dll" \
         -D "JDK_INTERNAL_NAME=fontmanager" \
         -D "JDK_FTYPE=0x2L", \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libfontmanager, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libfontmanager, \
     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 $(BUILD_LIBFONTMANAGER): $(BUILD_LIBAWT)
@@ -982,7 +982,7 @@ ifndef OPENJDK
       MAPFILE := $(JDK_TOPDIR)/make/mapfiles/libt2k/mapfile-vers, \
       LDFLAGS := $(LDFLAGS_JDKLIB) $(LDFLAGS_CXX_JDK) \
           $(call SET_SHARED_LIBRARY_ORIGIN), \
-      LDFLAGS_windows := user32.lib $(JDK_OUTPUTDIR)/objs/libfontmanager/fontmanager.lib, \
+      LDFLAGS_windows := user32.lib e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libfontmanager/fontmanager.lib, \
       LDFLAGS_SUFFIX_posix := $(LIBM) $(LIBCXX) -lfontmanager -ljava -ljvm -lc, \
       LDFLAGS_SUFFIX_solaris := -lawt -lawt_headless, \
       VERSIONINFO_RESOURCE := $(JDK_TOPDIR)/src/windows/resource/version.rc, \
@@ -990,7 +990,7 @@ ifndef OPENJDK
           -D "JDK_FNAME=t2k.dll" \
           -D "JDK_INTERNAL_NAME=t2k" \
           -D "JDK_FTYPE=0x2L", \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libt2k, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libt2k, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   # t2k is linked against fontmanager
@@ -1027,14 +1027,14 @@ ifeq ($(OPENJDK_TARGET_OS), windows)
           -D "JDK_FNAME=jawt.dll" \
           -D "JDK_INTERNAL_NAME=jawt" \
           -D "JDK_FTYPE=0x2L", \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libjawt, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjawt, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   $(BUILD_LIBJAWT): $(BUILD_LIBAWT)
 
   $(JDK_OUTPUTDIR)/lib/$(LIBRARY_PREFIX)jawt$(STATIC_LIBRARY_SUFFIX): $(BUILD_LIBJAWT)
 	$(ECHO) Copying $(@F)
-	$(CP) $(JDK_OUTPUTDIR)/objs/libjawt/$(LIBRARY_PREFIX)jawt$(STATIC_LIBRARY_SUFFIX) $@
+	$(CP) e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjawt/$(LIBRARY_PREFIX)jawt$(STATIC_LIBRARY_SUFFIX) $@
 
   BUILD_LIBRARIES += $(JDK_OUTPUTDIR)/lib/$(LIBRARY_PREFIX)jawt$(STATIC_LIBRARY_SUFFIX)
 
@@ -1077,7 +1077,7 @@ else # OPENJDK_TARGET_OS not windows
       LDFLAGS_SUFFIX_solaris := $(JAWT_LIBS) $(LDFLAGS_JDKLIB_SUFFIX) -lXrender, \
       LDFLAGS_SUFFIX_macosx := -Xlinker -rpath -Xlinker @loader_path $(JAWT_LIBS) \
           -framework Cocoa $(LDFLAGS_JDKLIB_SUFFIX), \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libjawt, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjawt, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   ifndef BUILD_HEADLESS_ONLY
@@ -1138,7 +1138,7 @@ ifndef OPENJDK
           -D "JDK_FNAME=kcms.dll" \
           -D "JDK_INTERNAL_NAME=kcms" \
           -D "JDK_FTYPE=0x2L", \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libkcms, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libkcms, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   $(BUILD_LIBKCMS): $(BUILD_LIBJAVA)
@@ -1174,7 +1174,7 @@ ifndef OPENJDK
             LDFLAGS := $(LDFLAGS_JDKLIB) \
                 $(call SET_SHARED_LIBRARY_ORIGIN), \
             LDFLAGS_SUFFIX := -L$(OPENWIN_LIB)$(OPENJDK_TARGET_CPU_ISADIR) -R$(OPENWIN_LIB)$(OPENJDK_TARGET_CPU_ISADIR) -ldga -lX11 $(LIBDL) -lc, \
-            OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libsunwjdga, \
+            OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libsunwjdga, \
             DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
         BUILD_LIBRARIES += $(BUILD_LIBSUNWJDGA)
@@ -1270,7 +1270,7 @@ ifndef BUILD_HEADLESS_ONLY
           -D "JDK_FNAME=splashscreen.dll" \
           -D "JDK_INTERNAL_NAME=splashscreen" \
           -D "JDK_FTYPE=0x2L", \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libsplashscreen, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libsplashscreen, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   BUILD_LIBRARIES += $(LIBSPLASHSCREEN)
@@ -1313,7 +1313,7 @@ ifndef OPENJDK
           -D "JDK_FNAME=dcpr.dll" \
           -D "JDK_INTERNAL_NAME=dcpr" \
           -D "JDK_FTYPE=0x2L", \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libdcpr, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libdcpr, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   $(BUILD_LIBDCPR): $(BUILD_LIBJAVA)
@@ -1442,7 +1442,7 @@ ifeq ($(OPENJDK_TARGET_OS), macosx)
           -framework JavaRuntimeSupport \
           -framework OpenGL \
           -framework QuartzCore -ljava, \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libawt_lwawt, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libawt_lwawt, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   BUILD_LIBRARIES += $(BUILD_LIBAWT_LWAWT)
@@ -1481,7 +1481,7 @@ ifeq ($(OPENJDK_TARGET_OS), macosx)
           -framework JavaNativeFoundation \
           -framework JavaRuntimeSupport \
           -ljava -ljvm, \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libosxui, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libosxui, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   BUILD_LIBRARIES += $(BUILD_LIBOSXUI)

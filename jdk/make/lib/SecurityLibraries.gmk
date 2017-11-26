@@ -55,7 +55,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBJAAS, \
         -D "JDK_FNAME=$(LIBJAAS_NAME).dll" \
         -D "JDK_INTERNAL_NAME=$(LIBJAAS_NAME)" \
         -D "JDK_FTYPE=0x2L", \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libjaas, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjaas, \
     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 $(BUILD_LIBJAAS): $(BUILD_LIBJAVA)
@@ -87,7 +87,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBJ2PCSC, \
         -D "JDK_FNAME=j2pcsc.dll" \
         -D "JDK_INTERNAL_NAME=j2pcsc" \
         -D "JDK_FTYPE=0x2L", \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libj2pcsc, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libj2pcsc, \
     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 BUILD_LIBRARIES += $(BUILD_LIBJ2PCSC)
@@ -110,7 +110,7 @@ ifneq ($(OPENJDK_TARGET_OS), windows)
           $(call SET_SHARED_LIBRARY_ORIGIN), \
       LDFLAGS_SUFFIX := $(LIBDL), \
       LDFLAGS_SUFFIX_solaris := -lc, \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libj2gss, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libj2gss, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   BUILD_LIBRARIES += $(BUILD_LIBJ2GSS)
@@ -150,7 +150,7 @@ ifneq ($(BUILD_CRYPTO), no)
             -D "JDK_FNAME=$(BUILD_LIBKRB5_NAME).dll" \
             -D "JDK_INTERNAL_NAME=$(BUILD_LIBKRB5_NAME)" \
             -D "JDK_FTYPE=0x2L", \
-        OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libkrb5, \
+        OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libkrb5, \
         DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
     BUILD_LIBRARIES += $(BUILD_LIBKRB5)
@@ -177,7 +177,7 @@ ifeq ($(OPENJDK_TARGET_OS), windows)
           -D "JDK_FNAME=sunmscapi.dll" \
           -D "JDK_INTERNAL_NAME=sunmscapi" \
           -D "JDK_FTYPE=0x2L", \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libsunmscapi, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libsunmscapi, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   BUILD_LIBRARIES += $(BUILD_LIBSUNMSCAPI)
@@ -209,7 +209,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBJ2PKCS11, \
         -D "JDK_FNAME=j2pkcs11.dll" \
         -D "JDK_INTERNAL_NAME=j2pkcs11" \
         -D "JDK_FTYPE=0x2L", \
-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libj2pkcs11, \
+    OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libj2pkcs11, \
     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
 BUILD_LIBRARIES += $(BUILD_LIBJ2PKCS11)
@@ -255,7 +255,7 @@ ifeq ($(ENABLE_INTREE_EC), yes)
           -D "JDK_FNAME=sunec.dll" \
           -D "JDK_INTERNAL_NAME=sunec" \
           -D "JDK_FTYPE=0x2L", \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libsunec, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libsunec, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   BUILD_LIBRARIES += $(BUILD_LIBSUNEC)
@@ -278,7 +278,7 @@ ifeq ($(OPENJDK_TARGET_OS), solaris)
         LDFLAGS := $(LDFLAGS_JDKLIB), \
         LDFLAGS_SUFFIX := $(LIBDL), \
         LDFLAGS_SUFFIX_solaris := -lc, \
-        OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libj2ucrypto, \
+        OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libj2ucrypto, \
         DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
     $(BUILD_LIBJ2UCRYPTO): $(BUILD_LIBJAVA)

@@ -106,8 +106,8 @@ $(eval $(call SetupArchive,ARCHIVE_JAXWS, $(BUILD_JAXWS) $(BUILD_JAF) $(TARGET_P
 
 $(eval $(call SetupZipArchive,ZIP_JAXWS_SOURCES, \
     SRC := $(JAXWS_TOPDIR)/src/share/jaf_classes $(JAXWS_TOPDIR)/src/share/jaxws_classes, \
-    ZIP := $(JAXWS_OUTPUTDIR)/dist/lib/src.zip))
+    ZIP := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jaxws/dist/lib/src.zip))
 
-all: $(JAXWS_OUTPUTDIR)/dist/lib/classes.jar $(JAXWS_OUTPUTDIR)/dist/lib/src.zip
+all: $(JAXWS_OUTPUTDIR)/dist/lib/classes.jar e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jaxws/dist/lib/src.zip
 
 .PHONY: default all

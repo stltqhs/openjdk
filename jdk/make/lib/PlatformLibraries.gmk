@@ -39,7 +39,7 @@ ifeq ($(OPENJDK_TARGET_OS), macosx)
           -framework Carbon \
           -framework JavaNativeFoundation \
           $(LDFLAGS_JDKLIB_SUFFIX), \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libAppleScriptEngine, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libAppleScriptEngine, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   $(BUILD_LIBAPPLESCRIPTENGINE): $(BUILD_LIBJAVA)
@@ -76,7 +76,7 @@ ifeq ($(OPENJDK_TARGET_OS), macosx)
           -framework OpenGL \
           -framework IOSurface \
           -framework QuartzCore, \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libosxapp, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libosxapp, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   BUILD_LIBRARIES += $(BUILD_LIBOSXAPP)
@@ -114,7 +114,7 @@ ifeq ($(OPENJDK_TARGET_OS), macosx)
           -framework Security \
           -framework SystemConfiguration \
           $(LDFLAGS_JDKLIB_SUFFIX), \
-      OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libosx, \
+      OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libosx, \
       DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
 
   BUILD_LIBRARIES += $(BUILD_LIBOSX)
@@ -156,7 +156,7 @@ endif
               -D "JDK_FNAME=JAWTAccessBridge$1.dll" \
               -D "JDK_INTERNAL_NAME=JAWTAccessBridge$1" \
               -D "JDK_FTYPE=0x02L", \
-          OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libjawtaccessbridge$1, \
+          OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjawtaccessbridge$1, \
           DEBUG_SYMBOLS := true)
 
     $$(BUILD_JAWTACCESSBRIDGE$1): \
@@ -183,7 +183,7 @@ endif
               -D "JDK_FNAME=JavaAccessBridge$1.dll" \
               -D "JDK_INTERNAL_NAME=JavaAccessBridge$1" \
               -D "JDK_FTYPE=0x02L", \
-          OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libjavaaccessbridge$1, \
+          OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libjavaaccessbridge$1, \
           DEBUG_SYMBOLS := true)
 
       $(call SetupNativeCompilation,BUILD_WINDOWSACCESSBRIDGE$1, \
@@ -209,7 +209,7 @@ endif
               -D "JDK_FNAME=WindowsAccessBridge$1.dll" \
               -D "JDK_INTERNAL_NAME=WindowsAccessBridge$1" \
               -D "JDK_FTYPE=0x02L", \
-          OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libwindowsaccessbridge$1, \
+          OBJECT_DIR := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jdk/objs/libwindowsaccessbridge$1, \
           DEBUG_SYMBOLS := true)
 
       BUILD_LIBRARIES += $$(BUILD_JAWTACCESSBRIDGE$1) $$(BUILD_JAVAACCESSBRIDGE$1) \

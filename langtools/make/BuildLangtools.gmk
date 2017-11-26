@@ -195,10 +195,10 @@ ifeq ($(PROPS_ARE_CREATED), yes)
 
     $(eval $(call SetupZipArchive,ZIP_FULL_JAVAC_SOURCE, \
         SRC := $(LANGTOOLS_TOPDIR)/src/share/classes $(LANGTOOLS_OUTPUTDIR)/gensrc, \
-        ZIP := $(LANGTOOLS_OUTPUTDIR)/dist/lib/src.zip))
+        ZIP := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/langtools/dist/lib/src.zip))
 
     all: $(LANGTOOLS_OUTPUTDIR)/dist/lib/classes.jar \
-        $(LANGTOOLS_OUTPUTDIR)/dist/lib/src.zip \
+        e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/langtools/dist/lib/src.zip \
         $(LANGTOOLS_OUTPUTDIR)/dist/bootstrap/lib/javac.jar
 
   endif

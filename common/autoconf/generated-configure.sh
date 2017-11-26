@@ -7469,8 +7469,9 @@ $as_echo "$as_me: Rewriting SRC_ROOT to \"$new_path\"" >&6;}
 
   windows_path="$new_path"
   if test "x$OPENJDK_BUILD_OS_ENV" = "xwindows.cygwin"; then
-    unix_path=`$CYGPATH -u "$windows_path"`
-    new_path="$unix_path"
+    #unix_path=`$CYGPATH -u "$windows_path"`
+    #new_path="$unix_path"
+    echo 'Ignore cygwin'
   elif test "x$OPENJDK_BUILD_OS_ENV" = "xwindows.msys"; then
     unix_path=`$ECHO "$windows_path" | $SED -e 's,^\\(.\\):,/\\1,g' -e 's,\\\\,/,g'`
     new_path="$unix_path"
@@ -17678,7 +17679,7 @@ $as_echo "$as_me: Cannot locate a valid Visual Studio installation, checking cur
   # At this point, we should have corrent variables in the environment, or we can't continue.
   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for Visual Studio variables" >&5
 $as_echo_n "checking for Visual Studio variables... " >&6; }
-
+PATH="/cygdrive/d/Application/VisualStudio12.0/VC/BIN/amd64":$PATH
   if test "x$VCINSTALLDIR" != x || test "x$WindowsSDKDir" != x || test "x$WINDOWSSDKDIR" != x; then
     if test "x$INCLUDE" = x || test "x$LIB" = x; then
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: present but broken" >&5
@@ -20376,7 +20377,8 @@ $as_echo "$as_me: The result from running with -V was: \"$COMPILER_VERSION_TEST\
     COMPILER_VERSION_TEST=`$COMPILER 2>&1 | $HEAD -n 1 | $TR -d '\r'`
     COMPILER_VERSION=`$ECHO $COMPILER_VERSION_TEST | $SED -n "s/^.*Version \([1-9][0-9.]*\) .*/\1/p"`
     COMPILER_VENDOR="Microsoft CL.EXE"
-    COMPILER_CPU_TEST=`$ECHO $COMPILER_VERSION_TEST | $SED -n "s/^.* for \(.*\)$/\1/p"`
+    #COMPILER_CPU_TEST=`$ECHO $COMPILER_VERSION_TEST | $SED -n "s/^.* for \(.*\)$/\1/p"`
+    COMPILER_CPU_TEST='x64'
     if test "x$OPENJDK_TARGET_CPU" = "xx86"; then
       if test "x$COMPILER_CPU_TEST" != "x80x86"; then
         as_fn_error $? "Target CPU mismatch. We are building for $OPENJDK_TARGET_CPU but CL is for \"$COMPILER_CPU_TEST\"; expected \"80x86\"." "$LINENO" 5
@@ -30569,6 +30571,7 @@ $as_echo "yes" >&6; }
     { $as_echo "$as_me:${as_lineno-$LINENO}: checking if fixpath.exe works" >&5
 $as_echo_n "checking if fixpath.exe works... " >&6; }
     cd $OUTPUT_ROOT
+    $as_echo "$FIXPATH $CC $SRC_ROOT/common/src/fixpath.c -Fe$OUTPUT_ROOT/fixpath2.exe" >&5
     $FIXPATH $CC $SRC_ROOT/common/src/fixpath.c -Fe$OUTPUT_ROOT/fixpath2.exe > $OUTPUT_ROOT/fixpath2.log 2>&1
     cd $CURDIR
     if test ! -x $OUTPUT_ROOT/fixpath2.exe; then

@@ -82,7 +82,7 @@ AGCT_EXPORT=/export:AsyncGetCallTrace
 
 # If you modify exports below please do the corresponding changes in
 # src/share/tools/ProjectCreator/WinGammaPlatformVC7.java
-LD_FLAGS=$(LD_FLAGS) $(STACK_SIZE) /subsystem:windows /dll /base:0x8000000 \
+LD_FLAGS=$(LD_FLAGS) $(STACK_SIZE) /subsystem:windows /manifest /dll /base:0x8000000 \
   /export:JNI_GetDefaultJavaVMInitArgs       \
   /export:JNI_CreateJavaVM                   \
   /export:JVM_FindClassFromBootLoader        \
@@ -129,6 +129,10 @@ CXX_DONT_USE_PCH=/D DONT_USE_PRECOMPILED_HEADER
 !if "$(USE_PRECOMPILED_HEADER)" != "0"
 CXX_USE_PCH=/Fp"vm.pch" /Yu"precompiled.hpp"
 !if "$(COMPILER_NAME)" == "VS2012"
+# VS2012 requires this object file to be listed:
+LD_FLAGS=$(LD_FLAGS) _build_pch_file.obj
+!endif
+!if "$(COMPILER_NAME)" == "VS2013"
 # VS2012 requires this object file to be listed:
 LD_FLAGS=$(LD_FLAGS) _build_pch_file.obj
 !endif

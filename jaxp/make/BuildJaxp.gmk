@@ -46,7 +46,7 @@ $(eval $(call SetupJavaCompilation,BUILD_JAXP, \
     SETUP := GENERATE_NEWBYTECODE_DEBUG, \
     SRC := $(JAXP_TOPDIR)/src, \
     BIN := $(JAXP_OUTPUTDIR)/classes, \
-    SRCZIP := $(JAXP_OUTPUTDIR)/dist/lib/src.zip))
+    SRCZIP := e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jaxp/dist/lib/src.zip))
 
 # Imitate the property cleaning mechanism in the old build. This will likely be replaced
 # by the unified functionality in JavaCompilation.gmk, but keep it the same as old build
@@ -66,6 +66,6 @@ $(eval $(call SetupArchive,ARCHIVE_JAXP, $(BUILD_JAXP) $(TARGET_PROP_FILES), \
     SUFFIXES := .class .properties, \
     JAR := $(JAXP_OUTPUTDIR)/dist/lib/classes.jar))
 
-all: $(JAXP_OUTPUTDIR)/dist/lib/classes.jar $(JAXP_OUTPUTDIR)/dist/lib/src.zip
+all: $(JAXP_OUTPUTDIR)/dist/lib/classes.jar e:/Project/openjdk/build/windows-x86_64-normal-server-fastdebug/jaxp/dist/lib/src.zip
 
 .PHONY: default all

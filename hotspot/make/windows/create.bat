@@ -140,6 +140,7 @@ goto usage
 :test3
 if not "%HOTSPOTMKSHOME%" == "" goto makedir
 if exist c:\cygwin\bin set HOTSPOTMKSHOME=c:\cygwin\bin
+if exist D:\Application\cygwin64\bin set HOTSPOTMKSHOME=D:\Application\cygwin64\bin
 if not "%HOTSPOTMKSHOME%" == "" goto makedir
 echo Warning: please set variable HOTSPOTMKSHOME to place where 
 echo          your MKS/Cygwin installation is
